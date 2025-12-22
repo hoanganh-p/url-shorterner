@@ -11,7 +11,6 @@ public class UrlService : IUrlService
 {
     private readonly IDynamoDBContext _db;
     private readonly IAmazonDynamoDB _dynamoDb;
-    private readonly string _tableName;
     private static readonly char[] Base62Chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
     private const int ShortCodeLength = 7;
     private readonly ILogger<UrlService> _logger;
@@ -20,7 +19,6 @@ public class UrlService : IUrlService
     {
         _dynamoDb = dynamoDb;
         _db = new DynamoDBContext(dynamoDb);
-        _tableName = "UrlMappings";
         _logger = logger;
     }
 

@@ -1,5 +1,4 @@
 using Amazon.DynamoDBv2;
-using Amazon.Runtime;
 using UrlShortener.Services;
 
 var builder = WebApplication.CreateBuilder(args);

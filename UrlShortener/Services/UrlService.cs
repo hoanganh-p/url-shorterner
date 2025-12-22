@@ -16,13 +16,11 @@ public class UrlService : IUrlService
     private const int ShortCodeLength = 7;
     private readonly ILogger<UrlService> _logger;
 
-    public UrlService(IAmazonDynamoDB dynamoDb, IConfiguration configuration, ILogger<UrlService> logger )
+    public UrlService(IAmazonDynamoDB dynamoDb, IConfiguration configuration, ILogger<UrlService> logger)
     {
         _dynamoDb = dynamoDb;
         _db = new DynamoDBContext(dynamoDb);
-        _tableName = configuration.GetSection("DynamoDB").GetValue<string>("TableName")
-                     ?? Environment.GetEnvironmentVariable("DYNAMODB_TABLE")
-                     ?? "UrlMappings";
+        _tableName = "UrlMappings";
         _logger = logger;
     }
 

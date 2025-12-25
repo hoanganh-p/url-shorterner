@@ -11,12 +11,15 @@ namespace UrlShortener.Models
         [DynamoDBProperty("Username")]
         public string Username { get; set; } = null!;
 
+        [DynamoDBProperty]
+        public string PasswordHash { get; set; } = null!;
+
         //[DynamoDBGlobalSecondaryIndexHashKey("EmailIndex")]
         [DynamoDBProperty]
         public string Email { get; set; } = null!;
 
-        [DynamoDBProperty]
-        public string PasswordHash { get; set; } = null!;
+        [DynamoDBProperty("Role")]
+        public string Role { get; set; } = "User";
 
         [DynamoDBProperty]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

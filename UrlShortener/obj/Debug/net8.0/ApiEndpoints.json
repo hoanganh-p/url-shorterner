@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_3",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_4",
     "RelativePath": "",
     "HttpMethod": "GET",
     "IsController": false,
@@ -27,7 +27,33 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "UrlShortener.Controllers.LoginRequest",
+        "Type": "UrlShortener.DTOs.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UrlShortener.Controllers.AuthController",
+    "Method": "GetCurrentUser",
+    "RelativePath": "api/Auth/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UrlShortener.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "UrlShortener.DTOs.RegisterRequest",
         "IsRequired": true
       }
     ],
@@ -59,13 +85,13 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "UrlShortener.Controllers.CreateRequest",
+        "Type": "UrlShortener.DTOs.CreateRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "UrlShortener.Controllers.CreateResponse",
+        "Type": "UrlShortener.DTOs.CreateResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

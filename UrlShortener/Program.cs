@@ -1,4 +1,5 @@
 using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -12,16 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>() 
     ?? throw new InvalidOperationException("JwtSettings is not configured properly");
+builder.Services.AddSingleton(jwtSettings);
 
 
 // Configure AWS options
-var awsOptions = builder.Configuration.GetAWSOptions();
-builder.Services.AddDefaultAWSOptions(awsOptions);
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddScoped<IDynamoDBContext>(provider =>
+{
+    var client = provider.GetRequiredService<IAmazonDynamoDB>();
+    return new DynamoDBContext(client);
+});
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
 
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUrlService, UrlService>();
 
 // Authentication

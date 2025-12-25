@@ -7,5 +7,4 @@
         public string Audience { get; set; } = null!;
         public int ExpirationInMinutes { get; set; }
     }
-
 }

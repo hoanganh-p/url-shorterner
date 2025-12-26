@@ -1,15 +1,23 @@
-# Build
+# Build results
 bin/
 obj/
+out/
 
 # IDE
 .vs/
 .vscode/
 .idea/
 
-# User files
+# User-specific files
 *.user
+*.vspscc
+*.vssscc
 *.suo
+*.ncrunch*
+*.map
+*.tmd
+*.rsuser
+*.sln.docstates
 
 # OS
 .DS_Store
@@ -22,6 +30,20 @@ project.lock.json
 # Logs
 *.log
 
-# Secrets
+# Entity Framework Migrations
+Migrations/
+
+# Publish output
+wwwroot/
+publish/
+app.publish/
+
+# AWS Lambda specific
+.aws-sam/
+aws-lambda-tools-defaults.json
+
+# Secrets and sensitive files
 appsettings.Development.json
-.env
+appsettings.Local.json
+appsettings.*.json
+secrets.json
